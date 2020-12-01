@@ -5,16 +5,30 @@
 from flask import request, render_template #allows interations with any requests. #renders our templates!
 from app import app
 from app.database import create, read, update, delete, scan
+from app.forms.user import UserForm
 from datetime import datetime
 
 @app.route("/")
 def index():
     serv_time = datetime.now().strftime("%F %H:%M:%S") # verify server time. Used for users to verify if server is running
-    return {
-        "ok": True,
-        "version": "1.0.0",
-        "server_time": serv_time
-    }
+    tout = {}
+    tout["ok"] = True
+    tout["version"] = "1.0.0"
+    tout["server_time"] = serv_time
+    return render_template("index.html", out=tout)
+
+@app.route("/user_form", methods=["GET", "POST"])
+def user_form():
+    if request.method == "POST":
+        u_Fname = request.form.get("f_name")
+        u_Lname = request.form.get("l_name")
+        u_Hobby = request.form.get("hobby")
+
+        create(u_Fname, u_Lname, u_Hobby)
+        
+    form = UserForm()
+
+    return render_template("user_form.html", form=form)
 
 @app.route("/users")
 def get_all_users():

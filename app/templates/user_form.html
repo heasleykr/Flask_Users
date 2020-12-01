@@ -1,0 +1,14 @@
+<!-- Jinja2 Dynamic template for User input -->
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wft %}
+
+{% block content %}
+<h1>Registered A New Person! </h1>
+<p>(Don't forget their favorite hobby)</p>
+<hr>
+<form method="POST">
+    {{ wft.quick_form(form)}}
+</form>
+<hr>
+
+{% endblock %}

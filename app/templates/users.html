@@ -4,10 +4,12 @@
 {% block content %}
 <div class="container">
     <!-- Jinja for loop -->
+        <h1>Registered People in Our Database: </h1>
         {% for user in users %} 
-                <h1 id="test">Name : {{ user["first_name"] }} {{ user["last_name"]}}</h1>
-                <h2>Hobby: </h2>
-                <h3>{{ user["hobby"] }}</h3>
+        <hr>
+                <h2 id="test">Name : {{ user["first_name"] }} {{ user["last_name"]}}</h2>
+                <h3>Hobby: </h3> <h4>{{ user["hobby"] }}</h4>
+        <hr>
         {% endfor %}
     </div>
 </div>

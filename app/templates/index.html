@@ -1,0 +1,15 @@
+<!-- Dynamic Jinja2 Html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h3>Welcome To: </h3>
+    <h1>People & Hobbies</h1>
+    <h4>A humble Flask App developed by Katelynn Heasley</h4>
+    <hr>
+    <h2>Servier is Running: </h2>
+    <h3>Status: {{ out["ok"] }}</h3>
+    <h3>Version: {{ out["version"] }}</h3>
+    <h3>Server Time: {{ out["server_time"] }}</h3>
+</div>
+{% endblock %}
